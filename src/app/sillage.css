@@ -667,8 +667,9 @@
   @media (hover: hover) { .case__cta:hover svg { translate: 3px -3px; } }
   .case__cta:focus-visible svg { translate: 3px -3px; }
 
-  .case__gallery { grid-column: 7 / span 6; display: grid; gap: 10px; }
-  .case__photo { position: relative; overflow: hidden; aspect-ratio: 8 / 9; background: var(--color-5); }
+  /* Capped so a photo (4:5) always fits on screen, even on wide displays. */
+  .case__gallery { grid-column: 7 / span 6; justify-self: center; display: grid; gap: 12px; width: min(100%, 520px, calc((100svh - 140px) * .8)); }
+  .case__photo { position: relative; overflow: hidden; aspect-ratio: 4 / 5; background: var(--color-5); }
   .case__photo img { object-fit: cover; }
 
   .case__more { padding: var(--space-2) var(--space-1); }
@@ -685,6 +686,7 @@
     .case__statement { text-indent: 0; }
     .case__body { grid-template-columns: minmax(0, 1fr); gap: 56px; }
     .case__notes, .case__gallery { grid-column: 1; position: static; }
+    .case__gallery { justify-self: stretch; width: auto; }
     .case__stage { grid-template-columns: minmax(0, 1fr); gap: 10px; }
     .case__cta { margin-left: 0; }
     .case__more-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
