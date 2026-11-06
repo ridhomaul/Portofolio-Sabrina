@@ -96,7 +96,7 @@ export default function CaseStudyPage({ project }: { project: Project }) {
             <li key={p.id}>
               <a className="case__more-card" href={`/works/${p.id}`}>
                 <span className="case__more-frame">
-                  <Image src={p.image} alt={p.alt} fill sizes="(max-width: 899px) 100vw, 560px" />
+                  <Image src={p.image} alt={p.alt} fill sizes="(max-width: 899px) 100vw, (max-width: 1504px) 50vw, 720px" />
                 </span>
                 <span className="case__more-caption m-text-3">
                   <span>{shortTitle(p.title)}</span>

@@ -643,6 +643,8 @@
 
   .case__label { display: flex; justify-content: space-between; gap: 24px; padding-top: 12px; border-top: 1px solid var(--color-5); }
   .case__label > :last-child { color: var(--color-3); text-align: right; }
+  /* Labels and captions on project pages: sentence case, like the reference. */
+  .case__label.m-text-3, .case__more-caption.m-text-3 { font-size: 15px; font-weight: 500; letter-spacing: -.005em; text-transform: none; }
 
   .case__intro { padding: clamp(56px, 8vw, 120px) var(--space-1) 0; }
   .case__statement {
@@ -669,13 +671,14 @@
 
   /* Capped so a photo (4:5) always fits on screen, even on wide displays. */
   .case__gallery { grid-column: 7 / span 6; justify-self: center; display: grid; gap: 12px; width: min(100%, 520px, calc((100svh - 140px) * .8)); }
-  .case__photo { position: relative; overflow: hidden; aspect-ratio: 4 / 5; background: var(--color-5); }
+  .case__photo { position: relative; overflow: hidden; aspect-ratio: 4 / 5; border-radius: 4px; background: var(--color-5); }
   .case__photo img { object-fit: cover; }
 
-  .case__more { padding: var(--space-2) var(--space-1); }
-  .case__more-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 560px)); gap: 24px; margin-top: clamp(48px, 7vw, 100px); }
-  .case__more-card { display: grid; gap: 12px; color: inherit; text-decoration: none; }
-  .case__more-frame { position: relative; overflow: hidden; aspect-ratio: 3 / 2; background: var(--color-5); }
+  /* Content capped at 1440px and centred, so the cards don't grow on wide screens. */
+  .case__more { box-sizing: content-box; max-width: 1440px; margin-inline: auto; padding: var(--space-2) var(--space-1); }
+  .case__more-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: clamp(48px, 7vw, 100px); }
+  .case__more-card { display: grid; gap: 14px; color: inherit; text-decoration: none; }
+  .case__more-frame { position: relative; overflow: hidden; aspect-ratio: 16 / 10; border-radius: 4px; background: var(--color-5); }
   .case__more-frame img { object-fit: cover; transition: scale .8s cubic-bezier(.2, .8, .2, 1); }
   @media (hover: hover) { .case__more-card:hover img { scale: 1.04; } }
   .case__more-caption { display: flex; justify-content: space-between; gap: 16px; }
