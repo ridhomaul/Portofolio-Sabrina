@@ -57,19 +57,6 @@ export const siteData = {
       "Experienced across conservation expeditions in Maluku, Lombok, and West Java, as well as managing a 240 million IDR organizational budget. I combine scientific rigor in the lab with resilience on the forest trail.",
     verbs: ["Survey", "Map", "Listen", "Analyze", "Conserve", "Empower"],
   },
-  featuredCase: {
-    tag: "Undergraduate Thesis · IPB University",
-    title: "DAS Cidanau",
-    client: "Analisis Perubahan Penggunaan Lahan dan Erosi di DAS Cidanau, Provinsi Banten",
-    image: "/images/cidanau.jpg",
-    alt: "Cidanau Watershed basin terrain and river system in Banten",
-    credits: [
-      "Spatial modeling with ArcGIS & Remote Sensing",
-      "Multi-temporal land-cover transition mapping",
-      "Soil erosion estimation using GIS USLE methodology",
-      "Ecosystem-based watershed management recommendations",
-    ],
-  },
   footprint: [
     "IPB University",
     "Lawalata IPB",

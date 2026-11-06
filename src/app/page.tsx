@@ -3,7 +3,6 @@ import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import Manifesto from "@/components/Manifesto";
 import WorksSection from "@/components/WorksSection";
-import FeatureSection from "@/components/FeatureSection";
 import FootprintSection from "@/components/FootprintSection";
 import ExpertiseSection from "@/components/ExpertiseSection";
 import MethodSection from "@/components/MethodSection";
@@ -20,7 +19,6 @@ export default function Home() {
         <Hero />
         <Manifesto />
         <WorksSection />
-        <FeatureSection />
         <FootprintSection />
         <ExpertiseSection />
         <MethodSection />

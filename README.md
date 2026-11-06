@@ -16,7 +16,6 @@ Website portofolio profesional untuk **Nurulia Oky Sabrina** (S1 Manajemen Hutan
 - **Wordmark S A B R I N A**: Render tipografi kustom dengan efek *stencil slit*.
 - **Selected Work bertumpuk**: Semua proyek tampil sebagai kartu yang menumpuk saat di-scroll, sementara judul di kiri tetap diam. Setiap kartu membuka halaman detailnya.
 - **Halaman detail proyek** (`/works/<id>`): hero foto blur yang tepinya miring saat di-scroll, pernyataan proyek, kolom Context/Method/Findings yang diam saat galeri foto di-scroll, dan More Work.
-- **Featured Case**: Sorotan riset skripsi DAS Cidanau dengan pemodelan spasial ArcGIS & USLE erosi tanah.
 - **Infinite Marquee Footprint**: Marquee mitra dan wilayah ekspedisi (IPB University, Lawalata, TuK Indonesia, Sibela, Gili Matra, Buru, Garut, dll.).
 - **Capabilities & Method**: 5 bidang keahlian dan 4 tahapan metodologi riset lingkungan.
 - **Academic & Experience**: Rekam jejak S1 Manajemen Hutan IPB (IPK: 3.04), kepengurusan Lawalata IPB, dan pengalaman kerja.
@@ -53,7 +52,6 @@ src/
 │   ├── Wordmark.tsx       # Wordmark huruf-per-huruf (hero & footer)
 │   ├── Manifesto.tsx      # Pernyataan misi & filosofi kerja
 │   ├── WorksSection.tsx   # Kartu proyek bertumpuk (Selected Work)
-│   ├── FeatureSection.tsx # Sorotan riset skripsi DAS Cidanau
 │   ├── FootprintSection.tsx # Marquee institusi & lokasi ekspedisi
 │   ├── ExpertiseSection.tsx # 5 pilar keahlian & foto riset
 │   ├── MethodSection.tsx  # 4 tahapan metodologi kerja
