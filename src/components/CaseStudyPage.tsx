@@ -79,7 +79,7 @@ export default function CaseStudyPage({ project }: { project: Project }) {
           <div className="case__gallery">
             {study.gallery.map((photo) => (
               <figure key={photo.src} className="case__photo" data-8b-motion="cut">
-                <Image src={photo.src} alt={photo.alt} fill sizes="(max-width: 899px) 100vw, 50vw" />
+                <Image src={photo.src} alt={photo.alt} fill sizes="(max-width: 899px) 100vw, 520px" />
               </figure>
             ))}
           </div>
@@ -96,7 +96,7 @@ export default function CaseStudyPage({ project }: { project: Project }) {
             <li key={p.id}>
               <a className="case__more-card" href={`/works/${p.id}`}>
                 <span className="case__more-frame">
-                  <Image src={p.image} alt={p.alt} fill sizes="(max-width: 899px) 100vw, 50vw" />
+                  <Image src={p.image} alt={p.alt} fill sizes="(max-width: 899px) 100vw, 560px" />
                 </span>
                 <span className="case__more-caption m-text-3">
                   <span>{shortTitle(p.title)}</span>
