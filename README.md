@@ -55,7 +55,6 @@ src/
 │   ├── FootprintSection.tsx # Marquee institusi & lokasi ekspedisi
 │   ├── ExpertiseSection.tsx # 5 pilar keahlian & foto riset
 │   ├── MethodSection.tsx  # 4 tahapan metodologi kerja
-│   ├── EducationSection.tsx # Latar belakang akademik IPB University
 │   ├── ExperienceSection.tsx # 6 milestone pengalaman kerja & organisasi
 │   ├── ContactSection.tsx # Informasi kontak & base location
 │   ├── Footer.tsx         # Footer wordmark & tautan

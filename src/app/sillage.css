@@ -315,20 +315,6 @@
 
 
 @layer sections {
-  #education { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 24px; align-items: start; padding: var(--space-2) var(--space-1); }
-  #education .studio__photo { grid-column: 1 / span 7; position: relative; overflow: hidden; aspect-ratio: 4 / 3.1; background: var(--color-5); }
-  #education .studio__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; }
-  #education .studio__text { grid-column: 9 / span 4; display: grid; gap: clamp(20px, 2.4vw, 30px); }
-  #education .studio__specs { border-bottom: 1px solid var(--color-5); }
-  #education .studio__spec { display: grid; grid-template-columns: minmax(96px, 30%) minmax(0, 1fr); gap: 16px; padding: 13px 0; border-top: 1px solid var(--color-5); }
-  #education .studio__spec dd { margin: 0; }
-  @media (max-width: 860px) {
-    #education .studio__photo, #education .studio__text { grid-column: 1 / -1; }
-  }
-}
-
-
-@layer sections {
   #experience { position: relative; overflow-x: clip; padding: var(--space-2) var(--space-1); }
   #experience .crew__head { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 24px; align-items: end; padding-bottom: clamp(36px, 5vw, 64px); }
   #experience .crew__head h2 { grid-column: 1 / span 7; }

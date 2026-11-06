@@ -26,7 +26,6 @@ These are stock placeholders loaded from images.unsplash.com, free to use under 
 | photo-1508873696983-2df5293cb395 | Method: Field Survey |
 | photo-1551288049-bebda4e38f71 | Method: Spatial Analysis |
 | photo-1497366216548-37526070297c | Method: Action & Policy |
-| photo-1511497584788-87676104235f | Education |
 | photo-1486406146926-c627a92ad1ab | Experience: TuK Indonesia |
 | photo-1509062522246-3755977927d7 | Experience: PT Jauhar Hidro Mekatron |
 | photo-1523240795612-9a054b0db644 | Experience: IPB University |

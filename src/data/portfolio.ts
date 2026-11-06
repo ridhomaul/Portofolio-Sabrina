@@ -69,18 +69,6 @@ export const siteData = {
     "KTH Giri Purnama",
     "Garut Lestari",
   ],
-  education: {
-    university: "Institut Pertanian Bogor (IPB University)",
-    degree: "S1 Manajemen Hutan, Fakultas Kehutanan dan Lingkungan",
-    gpa: "IPK: 3.04 (2022 – 2026)",
-    specs: [
-      { label: "Degree", value: "S1 Manajemen Hutan, IPB University (IPK: 3.04)" },
-      { label: "Specialization", value: "Ecosystem-based planning, spatial data & GIS remote sensing, forest inventory, policy" },
-      { label: "Finance Leadership", value: "Bendahara Umum BPH Lawalata IPB — Managed IDR 240M organizational budget" },
-      { label: "Field Footprint", value: "Maluku (Buru), Maluku Utara (Sibela), NTB (Gili Matra), Banten (Cidanau), Garut, Bogor" },
-      { label: "Languages", value: "Bahasa Indonesia (Native/Professional), English (Intermediate)" },
-    ],
-  },
 };
 
 export const projects: Project[] = [

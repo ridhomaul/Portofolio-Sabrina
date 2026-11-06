@@ -6,7 +6,6 @@ import WorksSection from "@/components/WorksSection";
 import FootprintSection from "@/components/FootprintSection";
 import ExpertiseSection from "@/components/ExpertiseSection";
 import MethodSection from "@/components/MethodSection";
-import EducationSection from "@/components/EducationSection";
 import ExperienceSection from "@/components/ExperienceSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
@@ -22,7 +21,6 @@ export default function Home() {
         <FootprintSection />
         <ExpertiseSection />
         <MethodSection />
-        <EducationSection />
         <ExperienceSection />
         <ContactSection />
       </main>

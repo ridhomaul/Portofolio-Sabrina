@@ -10,7 +10,6 @@ const startLinks = [
   { href: "/#method", label: "Method" },
 ];
 const endLinks = [
-  { href: "/#education", label: "Education" },
   { href: "/#experience", label: "Experience" },
   { href: "/#contact", label: "Contact" },
 ];
