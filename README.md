@@ -15,6 +15,7 @@ Website portofolio profesional untuk **Nurulia Oky Sabrina** (S1 Manajemen Hutan
 - **Design Aesthetic Sillage**: Hitam-putih tegas, garis rambut (*hairline rules*), tipografi kapital bersih, tata letak editorial presisi tinggi.
 - **Wordmark S A B R I N A**: Render tipografi kustom dengan efek *stencil slit*.
 - **Selected Work bertumpuk**: Proyek unggulan tampil sebagai kartu yang menumpuk saat di-scroll (judul kiri & tombol "See all" kanan tetap diam), diikuti daftar semua proyek dengan filter kategori (`All`, `GIS & Spatial`, `Expeditions`, `Social Forestry`, `Field Survey`).
+- **Halaman detail proyek** (`/works/<id>`): hero foto blur dengan potongan diagonal, pernyataan proyek, kolom Context/Method/Findings yang diam saat galeri foto di-scroll, dan More Work. Kartu di tumpukan dan baris di daftar proyek mengarah ke sini.
 - **Featured Case**: Sorotan riset skripsi DAS Cidanau dengan pemodelan spasial ArcGIS & USLE erosi tanah.
 - **Infinite Marquee Footprint**: Marquee mitra dan wilayah ekspedisi (IPB University, Lawalata, TuK Indonesia, Sibela, Gili Matra, Buru, Garut, dll.).
 - **Capabilities & Method**: 5 bidang keahlian dan 4 tahapan metodologi riset lingkungan.
@@ -42,6 +43,7 @@ src/
 ├── app/
 │   ├── layout.tsx         # Root layout, metadata SEO/OG, motion gate
 │   ├── page.tsx           # Halaman utama portofolio
+│   ├── works/[slug]/page.tsx # Halaman detail tiap proyek
 │   ├── icon.svg           # Favicon
 │   ├── globals.css        # Import Tailwind v4 + sillage.css
 │   └── sillage.css        # Gaya & animasi scroll dari template Sillage
@@ -59,10 +61,12 @@ src/
 │   ├── ExperienceSection.tsx # 6 milestone pengalaman kerja & organisasi
 │   ├── ContactSection.tsx # Informasi kontak & base location
 │   ├── Footer.tsx         # Footer wordmark & tautan
+│   ├── CaseStudyPage.tsx  # Isi halaman detail proyek
 │   └── motion/
 │       └── MotionKit.tsx  # Penggerak animasi scroll (port skrip template)
 └── data/
-    └── portfolio.ts       # Seluruh data CV Sabrina (mudah diedit)
+    ├── portfolio.ts       # Seluruh data CV Sabrina (mudah diedit)
+    └── case-studies.ts    # Isi halaman detail tiap proyek
 public/
 └── images/                # Aset gambar lokal
 ```
@@ -85,6 +89,7 @@ Batasan yang perlu diperhatikan (animasinya ditulis per posisi di `sillage.css`)
 - **Manifesto**: tepat 4 baris.
 - **Wordmark**: diambil dari `shortName` (7 huruf: SABRINA). Nama dengan jumlah huruf lain butuh penyesuaian aturan huruf di `sillage.css`.
 - **LinkedIn**: isi `linkedin` dengan URL profil; selama kosong, tautan tidak ditampilkan.
+- **Halaman detail proyek**: isinya di [`src/data/case-studies.ts`](src/data/case-studies.ts) dan **masih sementara**: teks dirangkai dari data yang ada, angka hasil bernilai `00`, dan galeri memakai foto yang sudah ada. Ganti dengan isi asli; field yang dikosongkan otomatis tidak tampil.
 - **Foto**: sebagian masih foto stok Unsplash (daftar di `CREDITS.md`). Taruh foto asli di `public/images/` lalu ganti path-nya di data.
 
 ## 🌐 Deploy

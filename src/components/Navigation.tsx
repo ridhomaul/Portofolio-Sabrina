@@ -3,15 +3,16 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { siteData } from "@/data/portfolio";
 
+// Root-relative so they also work from the project pages (/works/<id>).
 const startLinks = [
-  { href: "#works", label: "Work" },
-  { href: "#expertise", label: "Expertise" },
-  { href: "#method", label: "Method" },
+  { href: "/#works", label: "Work" },
+  { href: "/#expertise", label: "Expertise" },
+  { href: "/#method", label: "Method" },
 ];
 const endLinks = [
-  { href: "#education", label: "Education" },
-  { href: "#experience", label: "Experience" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#education", label: "Education" },
+  { href: "/#experience", label: "Experience" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 export default function Navigation() {
@@ -60,7 +61,7 @@ export default function Navigation() {
       data-solid={isSolid ? "" : undefined}
     >
       <nav className="nav__bar" aria-label="Main">
-        <a className="m-link-2" href="#hero">
+        <a className="m-link-2" href="/">
           {siteData.shortName}
         </a>
         <ul className="nav__list">

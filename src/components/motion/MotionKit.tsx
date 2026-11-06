@@ -125,7 +125,8 @@ export default function MotionKit() {
     );
 
     /* ---------- scene: method (sideways track) ---------- */
-    scene("method", () => {
+    // Scenes only run on pages that have their section (not on /works/<id>).
+    if (document.getElementById("method")) scene("method", () => {
       const section = document.getElementById("method");
       const track = section?.querySelector<HTMLElement>(".method__track");
       const frames = track ? [...track.querySelectorAll<HTMLElement>(".method__frame")] : [];
@@ -144,7 +145,7 @@ export default function MotionKit() {
     });
 
     /* ---------- scene: experience (cards deal out from a stack) ---------- */
-    scene("experience", () => {
+    if (document.getElementById("experience")) scene("experience", () => {
       const grid = document.querySelector<HTMLElement>("#experience .crew__grid");
       const cards = grid ? [...grid.querySelectorAll<HTMLElement>(".crew__card")] : [];
       if (!grid || !cards.length) throw new Error("experience: cards missing");

@@ -83,7 +83,7 @@ export default function WorksSection() {
               className="works__card"
               style={{ "--i": i, "--rest": featured.length - 1 - i } as React.CSSProperties}
             >
-              <div className="works__card-body">
+              <a className="works__card-body" href={`/works/${proj.id}`}>
                 <div className="works__frame">
                   <Image
                     src={proj.image}
@@ -93,11 +93,11 @@ export default function WorksSection() {
                     sizes="(max-width: 899px) 100vw, 50vw"
                   />
                 </div>
-                <p className="works__caption m-text-3">
+                <span className="works__caption m-text-3">
                   <span>{proj.title}</span>
                   <span>{proj.tagLabel}</span>
-                </p>
-              </div>
+                </span>
+              </a>
             </li>
           ))}
         </ol>
@@ -139,7 +139,11 @@ export default function WorksSection() {
               <span className="works__row-thumb">
                 <Image src={proj.image} alt="" width={176} height={132} sizes="88px" />
               </span>
-              <h4 className="m-text-5">{proj.title}</h4>
+              <h4 className="m-text-5">
+                <a className="works__row-link" href={`/works/${proj.id}`}>
+                  {proj.title}
+                </a>
+              </h4>
               <span className="works__row-tag m-text-3">{proj.tagLabel}</span>
             </li>
           ))}

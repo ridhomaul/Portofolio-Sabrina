@@ -42,7 +42,7 @@ export default function Footer() {
             </li>
           )}
           <li>
-            <a className="m-link" href="#hero">
+            <a className="m-link" href="#">
               Back to top ↑
             </a>
           </li>
