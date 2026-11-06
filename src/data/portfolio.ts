@@ -2,9 +2,12 @@ export interface Project {
   id: string;
   title: string;
   category: string;
+  tags: string[]; // for filtering ('gis', 'expedition', 'community', 'survey')
   tagLabel: string;
   image: string;
   alt: string;
+  /** Shown as a card in the "Selected work" stack; every project is in the index below it. */
+  featured?: boolean;
 }
 
 export interface MethodStep {
@@ -66,43 +69,60 @@ export const siteData = {
   ],
 };
 
+export const filterCategories = [
+  { label: "All", value: "all" },
+  { label: "GIS & Spatial", value: "gis" },
+  { label: "Expeditions", value: "expedition" },
+  { label: "Social Forestry", value: "community" },
+  { label: "Field Survey", value: "survey" },
+];
+
 export const projects: Project[] = [
   {
     id: "cidanau",
     title: "DAS Cidanau — Land-Use Change & Erosion Analysis",
     category: "GIS & Remote Sensing",
+    tags: ["gis"],
     tagLabel: "GIS & Remote Sensing",
     image: "/images/cidanau.jpg",
     alt: "Aerial view of Cidanau watershed basin, West Java / Banten",
   },
   {
     id: "sibela",
+    featured: true,
     title: "Naraya Sibela — Endemic Bird Population & Habitat",
     category: "Expedition · Biodiversity",
+    tags: ["expedition", "survey"],
     tagLabel: "Expedition · Biodiversity",
     image: "/images/bird.jpg",
     alt: "Endemic tropical bird in Gunung Sibela nature reserve",
   },
   {
     id: "buru",
+    featured: true,
     title: "Lawalata 50th — Indigenous Resilience in Pulau Buru",
     category: "Expedition · Climate Adaptation",
+    tags: ["expedition", "community"],
     tagLabel: "Expedition · Climate Adaptation",
     image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=70",
     alt: "Rainforest mountains and indigenous settlement in Buru Island, Maluku",
   },
   {
     id: "gili",
+    featured: true,
     title: "Srikandi of the Sea — Marine Conservation & Gender",
     category: "Expedition · Coastal Conservation",
+    tags: ["expedition", "survey"],
     tagLabel: "Expedition · Coastal Conservation",
     image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=70",
     alt: "Turquoise tropical waters and coral reef around Gili Matra",
   },
   {
     id: "garut-capstone",
+    featured: true,
     title: "KTH Giri Purnama Alam — Land Productivity in Garut",
     category: "Strategic Planning · Agroforestry",
+    tags: ["community", "survey"],
     tagLabel: "Strategic Planning · Agroforestry",
     image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=70",
     alt: "Terraced agricultural hillsides and agroforestry in Garut",
@@ -111,6 +131,7 @@ export const projects: Project[] = [
     id: "garut-kkn",
     title: "Perhutanan Sosial KKN-T — KTH Mentoring & SK Proposal",
     category: "Social Forestry · Community Outreach",
+    tags: ["community"],
     tagLabel: "Social Forestry · Community Outreach",
     image: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=800&q=70",
     alt: "Community meeting and forest farmers in West Java",
@@ -119,6 +140,7 @@ export const projects: Project[] = [
     id: "das-practicum",
     title: "DAS Management Practicum — Spatial Data Mentorship",
     category: "Academic Mentorship · GIS",
+    tags: ["gis"],
     tagLabel: "Academic Mentorship · GIS",
     image: "https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=800&q=70",
     alt: "Topographic terrain and watershed hydrological GIS modeling",
@@ -127,6 +149,7 @@ export const projects: Project[] = [
     id: "jauhar",
     title: "PT Jauhar Hidro Mekatron — Field Social & Soil Survey",
     category: "Socio-Economic & Soil Survey",
+    tags: ["survey"],
     tagLabel: "Socio-Economic & Soil Survey",
     image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=70",
     alt: "Field environmental survey and soil sampling in Bogor",

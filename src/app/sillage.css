@@ -205,14 +205,14 @@
 }
 
 
-/* Works: sticky stacking cards, one per project. The title column stays put
-   while each card sticks a little lower than the one before and covers it;
-   WorksSection.tsx shrinks the covered cards. --n (card count) is set inline. */
+/* Works: sticky stacking cards, one per project. Side columns stay put while
+   each card sticks a little lower than the one before and covers it;
+   WorksSection.tsx shrinks the covered cards. */
 @layer sections {
   #works {
-    --works-peek: 20px;
+    --works-peek: 28px;
     --works-card-h: calc((100vw - 2 * var(--space-1)) * .5 * .625 + 44px);
-    --works-top: max(72px, calc(50svh - var(--works-card-h) / 2 - (var(--n, 4) - 1) / 2 * var(--works-peek)));
+    --works-top: max(72px, calc(50svh - var(--works-card-h) / 2 - 1.5 * var(--works-peek)));
     position: relative;
     padding: 0 var(--space-1) var(--space-2);
   }
@@ -226,10 +226,14 @@
   @media (hover: hover) { #works .works__cta:hover svg { translate: 3px -3px; } }
   #works .works__cta:focus-visible svg { translate: 3px -3px; }
 
-  #works .works__stack { grid-column: 4 / span 6; display: grid; gap: clamp(72px, 14svh, 150px); }
-  /* Room for the last card to stick before the stack scrolls away. A spacer, not
-     padding: sticky cards are bounded by the list's content box. */
-  #works .works__stack::after { content: ""; height: 30svh; margin-top: calc(-1 * clamp(72px, 14svh, 150px)); }
+  #works .works__aside { grid-column: 10 / span 3; justify-self: end; position: sticky; top: calc(50svh - 36px); }
+  #works .works__all { display: inline-flex; align-items: center; gap: 14px; padding: 6px 18px 6px 6px; background: color-mix(in srgb, var(--color-5) 35%, var(--color-1)); color: inherit; text-decoration: none; transition: background .3s ease; }
+  @media (hover: hover) { #works .works__all:hover { background: var(--color-5); } }
+  #works .works__all:focus-visible { background: var(--color-5); }
+  #works .works__all-thumb { position: relative; width: 60px; height: 60px; overflow: hidden; background: var(--color-5); }
+  #works .works__all-thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+  #works .works__stack { grid-column: 4 / span 6; display: grid; gap: clamp(72px, 14svh, 150px); padding-bottom: 18svh; }
   /* --rest = cards after this one. The matching bottom padding keeps every card's
      offset when the whole stack is released and scrolls away together. */
   #works .works__card { position: sticky; top: calc(var(--works-top) + var(--i, 0) * var(--works-peek)); padding-bottom: calc(var(--rest, 0) * var(--works-peek)); transform-origin: 50% 0; }
@@ -241,14 +245,15 @@
   #works .works__caption { display: flex; width: 100%; justify-content: space-between; align-items: baseline; gap: 20px; padding-top: 12px; }
   #works .works__caption span:last-child { flex: 0 1 auto; max-width: 45%; color: var(--color-3); text-align: right; }
 
-  #works .works__more { display: flex; padding-top: clamp(24px, 3vw, 48px); }
+  #works .works__more { display: flex; padding-top: clamp(40px, 5vw, 64px); }
 
   @media (max-width: 899px) {
-    #works { --works-peek: 10px; --works-top: 68px; }
+    #works { --works-peek: 14px; --works-top: 68px; }
     #works .works__layout { grid-template-columns: minmax(0, 1fr); gap: 28px; margin-top: 40px; }
-    #works .works__side { grid-column: 1; position: static; justify-self: start; }
-    #works .works__stack { grid-column: 1; gap: 56px; }
-    #works .works__stack::after { height: 20svh; margin-top: -56px; }
+    #works .works__side, #works .works__aside { grid-column: 1; position: static; justify-self: start; }
+    #works .works__aside { order: 1; margin-top: -8px; }
+    #works .works__stack { order: 2; }
+    #works .works__stack { grid-column: 1; gap: 56px; padding-bottom: 10svh; }
     #works .works__frame { aspect-ratio: 4 / 3; }
     #works .works__caption { flex-direction: column; gap: 4px; }
     #works .works__caption span:last-child { max-width: none; text-align: left; }
@@ -517,8 +522,8 @@
 
   .case__label { display: flex; justify-content: space-between; gap: 24px; padding-top: 12px; border-top: 1px solid var(--color-5); }
   .case__label > :last-child { color: var(--color-3); text-align: right; }
-  /* Labels and captions on project pages: sentence case, like the reference. */
-  .case__label.m-text-3, .case__more-caption.m-text-3 { font-size: 15px; font-weight: 500; letter-spacing: -.005em; text-transform: none; }
+  /* "More work" label and captions: sentence case, like the reference. */
+  .case__more .case__label.m-text-3, .case__more-caption.m-text-3 { font-size: 15px; font-weight: 500; letter-spacing: -.005em; text-transform: none; }
 
   .case__intro { padding: clamp(56px, 8vw, 120px) var(--space-1) 0; }
   .case__statement {
@@ -545,7 +550,7 @@
 
   /* Capped so a photo (4:5) always fits on screen, even on wide displays. */
   .case__gallery { grid-column: 7 / span 6; justify-self: center; display: grid; gap: 12px; width: min(100%, 520px, calc((100svh - 140px) * .8)); }
-  .case__photo { position: relative; overflow: hidden; aspect-ratio: 4 / 5; border-radius: 4px; background: var(--color-5); }
+  .case__photo { position: relative; overflow: hidden; aspect-ratio: 4 / 5; background: var(--color-5); }
   .case__photo img { object-fit: cover; }
 
   /* Content capped at 1440px and centred, so the cards don't grow on wide screens. */

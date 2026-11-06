@@ -4,11 +4,10 @@ import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import { projects, siteData } from "@/data/portfolio";
 
-// How much a card shrinks for each card stacked on top of it, and the most
-// cards that count: with all projects in the stack, deep cards stop shrinking
-// at 1 - 4 * 0.035 = 86% and stay apart through their peeking top edges.
-const SHRINK_PER_CARD = 0.035;
-const MAX_SHRINK_DEPTH = 4;
+const pad = (n: number) => String(n).padStart(2, "0");
+
+// How much a card shrinks for each card stacked on top of it.
+const SHRINK_PER_CARD = 0.045;
 
 export default function WorksSection() {
   const stackRef = useRef<HTMLOListElement>(null);
@@ -32,10 +31,7 @@ export default function WorksSection() {
         return Math.min(1, Math.max(0, 1 - (top - stuckAt) / height));
       });
       cards.forEach((card, i) => {
-        const covered = Math.min(
-          MAX_SHRINK_DEPTH,
-          progress.slice(i + 1).reduce((sum, p) => sum + p, 0)
-        );
+        const covered = progress.slice(i + 1).reduce((sum, p) => sum + p, 0);
         card.style.scale = covered ? String(1 - covered * SHRINK_PER_CARD) : "";
       });
     };
@@ -54,12 +50,7 @@ export default function WorksSection() {
   }, []);
 
   return (
-    <section
-      className="works"
-      id="works"
-      data-8b-section="works"
-      style={{ "--n": projects.length } as React.CSSProperties}
-    >
+    <section className="works" id="works" data-8b-section="works">
       <div className="works__top m-text-3">
         <span>Selected work</span>
         <span className="works__years">{siteData.worksYears}</span>
@@ -80,7 +71,7 @@ export default function WorksSection() {
           </a>
         </div>
 
-        <ol className="works__stack" ref={stackRef} aria-label="Projects">
+        <ol className="works__stack" ref={stackRef} aria-label="Featured projects">
           {projects.map((proj, i) => (
             <li
               key={proj.id}
@@ -105,6 +96,15 @@ export default function WorksSection() {
             </li>
           ))}
         </ol>
+
+        <div className="works__aside">
+          <a className="works__all m-text-3" href="#works">
+            <span className="works__all-thumb">
+              <Image src="/images/about.jpg" alt="" width={120} height={120} sizes="60px" />
+            </span>
+            <span>See all ({pad(projects.length)})</span>
+          </a>
+        </div>
       </div>
 
       <div className="works__more">
