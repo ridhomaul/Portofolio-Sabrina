@@ -14,7 +14,7 @@ Website portofolio profesional untuk **Nurulia Oky Sabrina** (S1 Manajemen Hutan
 
 - **Design Aesthetic Sillage**: Hitam-putih tegas, garis rambut (*hairline rules*), tipografi kapital bersih, tata letak editorial presisi tinggi.
 - **Wordmark S A B R I N A**: Render tipografi kustom dengan efek *stencil slit*.
-- **Interactive Works Filter**: Filter reaktif (state React) untuk memilah 8 proyek berdasarkan kategori (`All`, `GIS & Spatial`, `Expeditions`, `Social Forestry`, `Field Survey`).
+- **Selected Work bertumpuk**: Proyek unggulan tampil sebagai kartu yang menumpuk saat di-scroll (judul kiri & tombol "See all" kanan tetap diam), diikuti daftar semua proyek dengan filter kategori (`All`, `GIS & Spatial`, `Expeditions`, `Social Forestry`, `Field Survey`).
 - **Featured Case**: Sorotan riset skripsi DAS Cidanau dengan pemodelan spasial ArcGIS & USLE erosi tanah.
 - **Infinite Marquee Footprint**: Marquee mitra dan wilayah ekspedisi (IPB University, Lawalata, TuK Indonesia, Sibela, Gili Matra, Buru, Garut, dll.).
 - **Capabilities & Method**: 5 bidang keahlian dan 4 tahapan metodologi riset lingkungan.
@@ -50,7 +50,7 @@ src/
 │   ├── Hero.tsx           # Wordmark SABRINA & full-bleed hero image
 │   ├── Wordmark.tsx       # Wordmark huruf-per-huruf (hero & footer)
 │   ├── Manifesto.tsx      # Pernyataan misi & filosofi kerja
-│   ├── WorksSection.tsx   # Grid 8 proyek & filter interaktif
+│   ├── WorksSection.tsx   # Kartu proyek bertumpuk & daftar proyek + filter
 │   ├── FeatureSection.tsx # Sorotan riset skripsi DAS Cidanau
 │   ├── FootprintSection.tsx # Marquee institusi & lokasi ekspedisi
 │   ├── ExpertiseSection.tsx # 5 pilar keahlian & foto riset
@@ -81,7 +81,7 @@ Semua teks, judul, pengalaman, dan link ada di [`src/data/portfolio.ts`](src/dat
 
 Batasan yang perlu diperhatikan (animasinya ditulis per posisi di `sillage.css`):
 
-- **Proyek (Works)**: tepat 8. Proyek ke-9 tidak beranimasi; kurang dari 8 membuat pola grid berubah.
+- **Proyek (Works)**: jumlah bebas. Proyek dengan `featured: true` tampil di tumpukan kartu (ideal 3–5); semua proyek tampil di daftar "All projects". Rentang tahun di atas section diatur lewat `worksYears`.
 - **Manifesto**: tepat 4 baris.
 - **Wordmark**: diambil dari `shortName` (7 huruf: SABRINA). Nama dengan jumlah huruf lain butuh penyesuaian aturan huruf di `sillage.css`.
 - **LinkedIn**: isi `linkedin` dengan URL profil; selama kosong, tautan tidak ditampilkan.

@@ -6,6 +6,8 @@ export interface Project {
   tagLabel: string;
   image: string;
   alt: string;
+  /** Shown as a card in the "Selected work" stack; every project is in the index below it. */
+  featured?: boolean;
 }
 
 export interface ExpertiseItem {
@@ -42,6 +44,7 @@ export const siteData = {
   // Selama kosong, tautan LinkedIn tidak ditampilkan di footer.
   linkedin: "",
   tagline: "Rooted in nature, guided by data.",
+  worksYears: "2022 — 2026",
   manifesto: {
     lines: [
       // Tepat empat baris: animasi manifesto di sillage.css ditulis per baris.
@@ -116,6 +119,7 @@ export const projects: Project[] = [
   },
   {
     id: "sibela",
+    featured: true,
     title: "Naraya Sibela — Endemic Bird Population & Habitat",
     category: "Expedition · Biodiversity",
     tags: ["expedition", "survey"],
@@ -125,6 +129,7 @@ export const projects: Project[] = [
   },
   {
     id: "buru",
+    featured: true,
     title: "Lawalata 50th — Indigenous Resilience in Pulau Buru",
     category: "Expedition · Climate Adaptation",
     tags: ["expedition", "community"],
@@ -134,6 +139,7 @@ export const projects: Project[] = [
   },
   {
     id: "gili",
+    featured: true,
     title: "Srikandi of the Sea — Marine Conservation & Gender",
     category: "Expedition · Coastal Conservation",
     tags: ["expedition", "survey"],
@@ -143,6 +149,7 @@ export const projects: Project[] = [
   },
   {
     id: "garut-capstone",
+    featured: true,
     title: "KTH Giri Purnama Alam — Land Productivity in Garut",
     category: "Strategic Planning · Agroforestry",
     tags: ["community", "survey"],
