@@ -626,9 +626,8 @@
 
   .case__hero {
     position: relative; isolation: isolate; display: grid; grid-template-rows: 1fr auto; align-items: center;
-    height: 100svh; min-height: 560px; padding: 52px var(--space-1) calc(var(--space-1) + 5vw);
+    height: 100svh; min-height: 560px; padding: 52px var(--space-1) calc(var(--space-1) + 12px);
     overflow: hidden; background: var(--color-2); color: var(--color-1);
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 7vw), 0 100%);
   }
   .case__hero-bg { position: absolute; inset: -40px; z-index: -1; }
   .case__hero-bg img { object-fit: cover; filter: blur(22px) saturate(.9); }
@@ -690,4 +689,15 @@
     .case__cta { margin-left: 0; }
     .case__more-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
   }
+}
+
+/* Case hero: the bottom edge starts straight and tilts (right side rising)
+   as the hero scrolls away. Without scroll-driven animation or with reduced
+   motion it simply stays straight. */
+@layer scenes {
+[data-8b-live] .case__hero { animation: case-hero-tilt linear both; animation-timeline: view(); animation-range: exit 0% exit 70%; }
+}
+@keyframes case-hero-tilt {
+  from { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+  to { clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12vw), 0 100%); }
 }
