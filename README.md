@@ -14,8 +14,8 @@ Website portofolio profesional untuk **Nurulia Oky Sabrina** (S1 Manajemen Hutan
 
 - **Design Aesthetic Sillage**: Hitam-putih tegas, garis rambut (*hairline rules*), tipografi kapital bersih, tata letak editorial presisi tinggi.
 - **Wordmark S A B R I N A**: Render tipografi kustom dengan efek *stencil slit*.
-- **Selected Work bertumpuk**: Proyek unggulan tampil sebagai kartu yang menumpuk saat di-scroll (judul kiri & tombol "See all" kanan tetap diam), diikuti daftar semua proyek dengan filter kategori (`All`, `GIS & Spatial`, `Expeditions`, `Social Forestry`, `Field Survey`).
-- **Halaman detail proyek** (`/works/<id>`): hero foto blur dengan potongan diagonal, pernyataan proyek, kolom Context/Method/Findings yang diam saat galeri foto di-scroll, dan More Work. Kartu di tumpukan dan baris di daftar proyek mengarah ke sini.
+- **Selected Work bertumpuk**: Semua proyek tampil sebagai kartu yang menumpuk saat di-scroll, sementara judul di kiri tetap diam. Setiap kartu membuka halaman detailnya.
+- **Halaman detail proyek** (`/works/<id>`): hero foto blur yang tepinya miring saat di-scroll, pernyataan proyek, kolom Context/Method/Findings yang diam saat galeri foto di-scroll, dan More Work.
 - **Featured Case**: Sorotan riset skripsi DAS Cidanau dengan pemodelan spasial ArcGIS & USLE erosi tanah.
 - **Infinite Marquee Footprint**: Marquee mitra dan wilayah ekspedisi (IPB University, Lawalata, TuK Indonesia, Sibela, Gili Matra, Buru, Garut, dll.).
 - **Capabilities & Method**: 5 bidang keahlian dan 4 tahapan metodologi riset lingkungan.
@@ -52,7 +52,7 @@ src/
 │   ├── Hero.tsx           # Wordmark SABRINA & full-bleed hero image
 │   ├── Wordmark.tsx       # Wordmark huruf-per-huruf (hero & footer)
 │   ├── Manifesto.tsx      # Pernyataan misi & filosofi kerja
-│   ├── WorksSection.tsx   # Kartu proyek bertumpuk & daftar proyek + filter
+│   ├── WorksSection.tsx   # Kartu proyek bertumpuk (Selected Work)
 │   ├── FeatureSection.tsx # Sorotan riset skripsi DAS Cidanau
 │   ├── FootprintSection.tsx # Marquee institusi & lokasi ekspedisi
 │   ├── ExpertiseSection.tsx # 5 pilar keahlian & foto riset
@@ -85,7 +85,7 @@ Semua teks, judul, pengalaman, dan link ada di [`src/data/portfolio.ts`](src/dat
 
 Batasan yang perlu diperhatikan (animasinya ditulis per posisi di `sillage.css`):
 
-- **Proyek (Works)**: jumlah bebas. Proyek dengan `featured: true` tampil di tumpukan kartu (ideal 3–5); semua proyek tampil di daftar "All projects". Rentang tahun di atas section diatur lewat `worksYears`.
+- **Proyek (Works)**: semua proyek di `projects` tampil di tumpukan kartu, sesuai urutannya. Rentang tahun di atas section diatur lewat `worksYears`.
 - **Manifesto**: tepat 4 baris.
 - **Wordmark**: diambil dari `shortName` (7 huruf: SABRINA). Nama dengan jumlah huruf lain butuh penyesuaian aturan huruf di `sillage.css`.
 - **LinkedIn**: isi `linkedin` dengan URL profil; selama kosong, tautan tidak ditampilkan.

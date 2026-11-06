@@ -1,17 +1,16 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import Image from "next/image";
-import { filterCategories, projects, siteData } from "@/data/portfolio";
+import { projects, siteData } from "@/data/portfolio";
 
-const featured = projects.filter((p) => p.featured);
-const pad = (n: number) => String(n).padStart(2, "0");
-
-// How much a card shrinks for each card stacked on top of it.
-const SHRINK_PER_CARD = 0.045;
+// How much a card shrinks for each card stacked on top of it, and the most
+// cards that count: with all projects in the stack, deep cards stop shrinking
+// at 1 - 4 * 0.035 = 86% and stay apart through their peeking top edges.
+const SHRINK_PER_CARD = 0.035;
+const MAX_SHRINK_DEPTH = 4;
 
 export default function WorksSection() {
-  const [activeFilter, setActiveFilter] = useState("all");
   const stackRef = useRef<HTMLOListElement>(null);
 
   // Covered cards shrink a little per card on top, so their top edges peek out
@@ -33,7 +32,10 @@ export default function WorksSection() {
         return Math.min(1, Math.max(0, 1 - (top - stuckAt) / height));
       });
       cards.forEach((card, i) => {
-        const covered = progress.slice(i + 1).reduce((sum, p) => sum + p, 0);
+        const covered = Math.min(
+          MAX_SHRINK_DEPTH,
+          progress.slice(i + 1).reduce((sum, p) => sum + p, 0)
+        );
         card.style.scale = covered ? String(1 - covered * SHRINK_PER_CARD) : "";
       });
     };
@@ -51,11 +53,13 @@ export default function WorksSection() {
     };
   }, []);
 
-  const matches = (tags: string[]) => activeFilter === "all" || tags.includes(activeFilter);
-  const shown = projects.filter((p) => matches(p.tags)).length;
-
   return (
-    <section className="works" id="works" data-8b-section="works">
+    <section
+      className="works"
+      id="works"
+      data-8b-section="works"
+      style={{ "--n": projects.length } as React.CSSProperties}
+    >
       <div className="works__top m-text-3">
         <span>Selected work</span>
         <span className="works__years">{siteData.worksYears}</span>
@@ -76,12 +80,12 @@ export default function WorksSection() {
           </a>
         </div>
 
-        <ol className="works__stack" ref={stackRef} aria-label="Featured projects">
-          {featured.map((proj, i) => (
+        <ol className="works__stack" ref={stackRef} aria-label="Projects">
+          {projects.map((proj, i) => (
             <li
               key={proj.id}
               className="works__card"
-              style={{ "--i": i, "--rest": featured.length - 1 - i } as React.CSSProperties}
+              style={{ "--i": i, "--rest": projects.length - 1 - i } as React.CSSProperties}
             >
               <a className="works__card-body" href={`/works/${proj.id}`}>
                 <div className="works__frame">
@@ -101,61 +105,15 @@ export default function WorksSection() {
             </li>
           ))}
         </ol>
-
-        <div className="works__aside">
-          <a className="works__all m-text-3" href="#works-index">
-            <span className="works__all-thumb">
-              <Image src="/images/about.jpg" alt="" width={120} height={120} sizes="60px" />
-            </span>
-            <span>See all ({pad(projects.length)})</span>
-          </a>
-        </div>
       </div>
 
-      <div className="works__index" id="works-index">
-        <div className="works__index-head">
-          <h3 className="m-text-5">All projects ({pad(projects.length)})</h3>
-          <div className="works__filters" role="group" aria-label="Filter projects by discipline">
-            {filterCategories.map((cat) => (
-              <button
-                key={cat.value}
-                className="m-btn-3"
-                type="button"
-                aria-pressed={activeFilter === cat.value}
-                onClick={() => setActiveFilter(cat.value)}
-              >
-                <span className="m-btn-3__label">{cat.label}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-        <p className="u-hidden" aria-live="polite">
-          {activeFilter === "all" ? "" : `Showing ${shown} of ${projects.length} projects`}
-        </p>
-        <ol className="works__rows">
-          {projects.map((proj, i) => (
-            <li key={proj.id} className="works__row" hidden={!matches(proj.tags)}>
-              <span className="works__row-num m-text-3">{pad(i + 1)}</span>
-              <span className="works__row-thumb">
-                <Image src={proj.image} alt="" width={176} height={132} sizes="88px" />
-              </span>
-              <h4 className="m-text-5">
-                <a className="works__row-link" href={`/works/${proj.id}`}>
-                  {proj.title}
-                </a>
-              </h4>
-              <span className="works__row-tag m-text-3">{proj.tagLabel}</span>
-            </li>
-          ))}
-        </ol>
-        <div className="works__more">
-          <a
-            className="m-btn"
-            href={`mailto:${siteData.email}?subject=Portfolio%20Inquiry%20-%20Nurulia%20Oky%20Sabrina`}
-          >
-            <span className="m-btn__label">Request Full Academic Portfolio</span>
-          </a>
-        </div>
+      <div className="works__more">
+        <a
+          className="m-btn"
+          href={`mailto:${siteData.email}?subject=Portfolio%20Inquiry%20-%20Nurulia%20Oky%20Sabrina`}
+        >
+          <span className="m-btn__label">Request Full Academic Portfolio</span>
+        </a>
       </div>
     </section>
   );
