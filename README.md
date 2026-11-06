@@ -8,7 +8,7 @@ Website portofolio profesional untuk **Nurulia Oky Sabrina** (S1 Manajemen Hutan
 - **UI Library**: [React 19](https://react.dev/)
 - **Bahasa**: [TypeScript 5](https://www.typescriptlang.org/)
 - **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
-- **Optimasi Gambar**: `next/image` dengan AVIF/WebP otomatis
+- **Optimasi Gambar**: `next/image` (WebP/ukuran responsif otomatis)
 
 ## ✨ Fitur & Komponen
 
@@ -40,12 +40,15 @@ npm run start
 ```
 src/
 ├── app/
-│   ├── layout.tsx         # Root layout & Metadata SEO
+│   ├── layout.tsx         # Root layout, metadata SEO/OG, motion gate
 │   ├── page.tsx           # Halaman utama portofolio
-│   └── globals.css        # Tailwind v4 import & token gaya Sillage
+│   ├── icon.svg           # Favicon
+│   ├── globals.css        # Import Tailwind v4 + sillage.css
+│   └── sillage.css        # Gaya & animasi scroll dari template Sillage
 ├── components/
 │   ├── Navigation.tsx     # Header bar & menu mobile
 │   ├── Hero.tsx           # Wordmark SABRINA & full-bleed hero image
+│   ├── Wordmark.tsx       # Wordmark huruf-per-huruf (hero & footer)
 │   ├── Manifesto.tsx      # Pernyataan misi & filosofi kerja
 │   ├── WorksSection.tsx   # Grid 8 proyek & filter interaktif
 │   ├── FeatureSection.tsx # Sorotan riset skripsi DAS Cidanau
@@ -55,14 +58,35 @@ src/
 │   ├── EducationSection.tsx # Latar belakang akademik IPB University
 │   ├── ExperienceSection.tsx # 6 milestone pengalaman kerja & organisasi
 │   ├── ContactSection.tsx # Informasi kontak & base location
-│   └── Footer.tsx         # Footer wordmark & tautan
+│   ├── Footer.tsx         # Footer wordmark & tautan
+│   └── motion/
+│       └── MotionKit.tsx  # Penggerak animasi scroll (port skrip template)
 └── data/
     └── portfolio.ts       # Seluruh data CV Sabrina (mudah diedit)
 public/
 └── images/                # Aset gambar lokal
 ```
 
+## 🎞️ Cara kerja animasi
+
+Animasi memakai *CSS scroll-driven animations* dari template Sillage (`sillage.css`):
+
+1. Skrip kecil di `layout.tsx` memasang atribut `data-8b-live` pada `<html>` **hanya** bila browser mendukung `animation-timeline` dan pengguna tidak memilih *reduced motion*.
+2. `MotionKit.tsx` lalu memberi class `is-in` pada elemen `data-8b-motion` saat masuk layar, memberi indeks `--i`, dan mengukur jarak untuk track Method & kartu Experience.
+3. Tanpa dukungan (mis. Firefox) atau dengan *reduced motion*, halaman tampil dalam tata letak statis yang lengkap.
+
 ## ✏️ Mengubah Konten
 
-Untuk mengganti atau memperbarui teks, judul, pengalaman, atau link:
-Cukup edit file [`src/data/portfolio.ts`](src/data/portfolio.ts). Semua data sudah terpusat dan ber-tipe kuat (*strongly typed*).
+Semua teks, judul, pengalaman, dan link ada di [`src/data/portfolio.ts`](src/data/portfolio.ts).
+
+Batasan yang perlu diperhatikan (animasinya ditulis per posisi di `sillage.css`):
+
+- **Proyek (Works)**: tepat 8. Proyek ke-9 tidak beranimasi; kurang dari 8 membuat pola grid berubah.
+- **Manifesto**: tepat 4 baris.
+- **Wordmark**: diambil dari `shortName` (7 huruf: SABRINA). Nama dengan jumlah huruf lain butuh penyesuaian aturan huruf di `sillage.css`.
+- **LinkedIn**: isi `linkedin` dengan URL profil; selama kosong, tautan tidak ditampilkan.
+- **Foto**: sebagian masih foto stok Unsplash (daftar di `CREDITS.md`). Taruh foto asli di `public/images/` lalu ganti path-nya di data.
+
+## 🌐 Deploy
+
+Saat deploy ke domain sendiri, set environment variable `NEXT_PUBLIC_SITE_URL` (mis. `https://sabrina.example.com`) agar gambar pratinjau saat link dibagikan memakai URL yang benar. Di Vercel, URL produksi terdeteksi otomatis.

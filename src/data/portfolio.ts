@@ -38,13 +38,17 @@ export const siteData = {
   email: "oky.sabrina@gmail.com",
   phone: "+62 895 6353 28263",
   location: "Tangerang Selatan, Banten · Indonesia",
+  // Isi dengan URL profil LinkedIn, mis. "https://www.linkedin.com/in/nama-anda".
+  // Selama kosong, tautan LinkedIn tidak ditampilkan di footer.
+  linkedin: "",
   tagline: "Rooted in nature, guided by data.",
   manifesto: {
     lines: [
-      { text: "Not just", len: 8 },
-      { text: "data on a map.", len: 14 },
-      { text: "Forests and", len: 11 },
-      { text: "the people.", len: 11 },
+      // Tepat empat baris: animasi manifesto di sillage.css ditulis per baris.
+      "Not just",
+      "data on a map.",
+      "Forests and",
+      "the people.",
     ],
     lead: "Nurulia Oky Sabrina is a Forest Management graduate from IPB University.",
     copy1:

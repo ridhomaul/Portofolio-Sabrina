@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { methodSteps } from "@/data/portfolio";
 
 export default function MethodSection() {
@@ -17,12 +18,12 @@ export default function MethodSection() {
           {methodSteps.map((step) => (
             <li key={step.number} className="method__frame">
               <figure className="method__photo">
-                <img
+                <Image
                   src={step.image}
                   width={1600}
                   height={1068}
+                  sizes="(max-width: 700px) 85vw, 45vw"
                   alt={step.alt}
-                  loading="lazy"
                 />
               </figure>
               <div className="method__text">

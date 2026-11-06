@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { experienceMilestones, siteData } from "@/data/portfolio";
 
 export default function ExperienceSection() {
@@ -24,12 +25,12 @@ export default function ExperienceSection() {
               } as React.CSSProperties}
             >
               <figure className="crew__photo">
-                <img
+                <Image
                   src={exp.image}
                   width={1600}
-                  height={2400}
+                  height={2000}
+                  sizes="(max-width: 700px) 50vw, 17vw"
                   alt={exp.alt}
-                  loading="lazy"
                 />
               </figure>
               <h3 className="m-text-5">{exp.organization}</h3>

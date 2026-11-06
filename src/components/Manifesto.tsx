@@ -7,18 +7,15 @@ export default function Manifesto() {
   return (
     <section className="manifesto" id="manifesto" data-8b-section="manifesto">
       <h2 className="manifesto__stack">
-        <span className="manifesto__line m-text-4" style={{ "--len": 8 } as React.CSSProperties}>
-          Not just
-        </span>
-        <span className="manifesto__line m-text-4" style={{ "--len": 14 } as React.CSSProperties}>
-          data on a map.
-        </span>
-        <span className="manifesto__line m-text-4" style={{ "--len": 11 } as React.CSSProperties}>
-          Forests and
-        </span>
-        <span className="manifesto__line m-text-4" style={{ "--len": 11 } as React.CSSProperties}>
-          the people.
-        </span>
+        {manifesto.lines.map((line) => (
+          <span
+            key={line}
+            className="manifesto__line m-text-4"
+            style={{ "--len": line.length } as React.CSSProperties}
+          >
+            {line}
+          </span>
+        ))}
       </h2>
 
       <div className="manifesto__body">

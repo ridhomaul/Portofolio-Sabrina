@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { siteData } from "@/data/portfolio";
 
 export default function EducationSection() {
@@ -7,12 +8,12 @@ export default function EducationSection() {
   return (
     <section className="studio" id="education" data-8b-section="studio">
       <figure className="studio__photo" data-8b-motion="cut">
-        <img
-          src="https://images.unsplash.com/photo-1511497584788-87676104235f?auto=format&fit=crop&w=960&q=70"
+        <Image
+          src="https://images.unsplash.com/photo-1511497584788-87676104235f?auto=format&fit=crop&w=1600&q=70"
           width={1600}
           height={1067}
+          sizes="(max-width: 900px) 100vw, 58vw"
           alt="Lush green Indonesian forest landscape"
-          loading="lazy"
         />
       </figure>
       <div className="studio__text">

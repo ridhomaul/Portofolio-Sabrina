@@ -1,41 +1,16 @@
-"use client";
-
-import React, { useEffect } from "react";
+import React from "react";
+import Image from "next/image";
 import { siteData } from "@/data/portfolio";
+import Wordmark from "@/components/Wordmark";
 
 export default function Hero() {
-  const letters = ["S", "A", "B", "R", "I", "N", "A"];
-
-  useEffect(() => {
-    // Ensure data-8b-live is active if view-timeline is supported
-    if (
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: no-preference)").matches &&
-      CSS.supports("animation-timeline: view()")
-    ) {
-      document.documentElement.setAttribute("data-8b-live", "");
-    }
-  }, []);
-
   return (
     <section className="hero" id="hero" data-8b-section="hero">
       <h1 className="hero__title">
         <span className="u-hidden">
           {siteData.name} — {siteData.role}
         </span>
-        <span className="m-mark" aria-hidden="true" style={{ "--len": 7 } as React.CSSProperties}>
-          {letters.map((char, i) => (
-            <span
-              key={i}
-              className="m-mark__glyph"
-              style={{ "--hero-i": i } as React.CSSProperties}
-            >
-              <span className="m-mark__ink" data-glyph={char}>
-                {char}
-              </span>
-            </span>
-          ))}
-        </span>
+        <Wordmark indexed />
       </h1>
 
       <div className="hero__info">
@@ -52,12 +27,13 @@ export default function Hero() {
         <div className="hero__media-in">
           <div className="hero__push">
             <div className="hero__drift">
-              <img
+              <Image
                 src="/images/hero.jpg"
-                width={1600}
-                height={1085}
+                width={1376}
+                height={768}
+                sizes="100vw"
                 alt="Aerial view of mist rising over tropical rainforest canopy and winding river"
-                fetchPriority="high"
+                preload
               />
             </div>
           </div>

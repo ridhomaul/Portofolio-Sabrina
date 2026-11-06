@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { siteData } from "@/data/portfolio";
 
 export default function FeatureSection() {
@@ -8,19 +9,19 @@ export default function FeatureSection() {
     <section className="feature" id="feature" data-8b-section="feature">
       <div className="feature__stage">
         <div className="feature__frame">
-          <img
+          <Image
             className="feature__img"
             src={featuredCase.image}
-            width={1600}
-            height={1067}
+            width={1200}
+            height={896}
+            sizes="100vw"
             alt={featuredCase.alt}
-            loading="lazy"
           />
         </div>
         <div className="feature__copy">
           <p className="feature__tags m-text-3">{featuredCase.tag}</p>
           <div className="feature__titlebox">
-            <h2 className="feature__title m-text-4" style={{ "--len": 11 } as React.CSSProperties}>
+            <h2 className="feature__title m-text-4" style={{ "--len": featuredCase.title.length } as React.CSSProperties}>
               {featuredCase.title}
             </h2>
           </div>

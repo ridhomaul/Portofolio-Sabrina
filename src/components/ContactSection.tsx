@@ -11,7 +11,7 @@ export default function ContactSection() {
         <a
           className="contact__mail m-text-4 m-link"
           href={`mailto:${siteData.email}`}
-          style={{ "--len": 21 } as React.CSSProperties}
+          style={{ "--len": siteData.email.length } as React.CSSProperties}
         >
           {siteData.email}
         </a>

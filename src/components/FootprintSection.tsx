@@ -15,10 +15,15 @@ export default function FootprintSection() {
         </p>
       </div>
       <div className="clients__row">
-        <ul className="clients__track" aria-label="Clients" data-8b-items=":scope > li" data-row-loop="">
-          {/* Repeat for continuous smooth loop */}
-          {[...footprint, ...footprint].map((name, idx) => (
-            <li key={idx} className="clients__name m-text-4">
+        <ul className="clients__track" aria-label="Institutions and field sites" data-row-loop="">
+          {footprint.map((name) => (
+            <li key={name} className="clients__name m-text-4">
+              {name}
+            </li>
+          ))}
+          {/* Second copy for the seamless marquee loop; hidden in the static layout. */}
+          {footprint.map((name) => (
+            <li key={`${name}-copy`} className="clients__name clients__name--copy m-text-4" aria-hidden="true">
               {name}
             </li>
           ))}

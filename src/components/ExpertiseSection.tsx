@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { expertiseList } from "@/data/portfolio";
 
 export default function ExpertiseSection() {
@@ -15,12 +16,12 @@ export default function ExpertiseSection() {
       <div className="expertise__body">
         <figure className="expertise__portrait">
           <div className="expertise__portrait-in">
-            <img
+            <Image
               src="/images/about.jpg"
-              width={1600}
-              height={2133}
+              width={896}
+              height={1200}
+              sizes="(max-width: 900px) 100vw, 40vw"
               alt="Nurulia Oky Sabrina during field research in lush tropical forest"
-              loading="lazy"
             />
           </div>
         </figure>
