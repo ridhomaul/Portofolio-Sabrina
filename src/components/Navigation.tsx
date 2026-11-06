@@ -6,7 +6,6 @@ import { siteData } from "@/data/portfolio";
 // Root-relative so they also work from the project pages (/works/<id>).
 const startLinks = [
   { href: "/#works", label: "Work" },
-  { href: "/#expertise", label: "Expertise" },
   { href: "/#method", label: "Method" },
 ];
 const endLinks = [

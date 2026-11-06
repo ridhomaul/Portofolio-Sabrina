@@ -7,11 +7,6 @@ export interface Project {
   alt: string;
 }
 
-export interface ExpertiseItem {
-  title: string;
-  tags: string[];
-}
-
 export interface MethodStep {
   number: string;
   title: string;
@@ -135,29 +130,6 @@ export const projects: Project[] = [
     tagLabel: "Socio-Economic & Soil Survey",
     image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=70",
     alt: "Field environmental survey and soil sampling in Bogor",
-  },
-];
-
-export const expertiseList: ExpertiseItem[] = [
-  {
-    title: "GIS & Spatial Analysis",
-    tags: ["ArcGIS", "Remote Sensing", "Land-use classification", "Erosion modeling", "Watershed analysis"],
-  },
-  {
-    title: "Field Research & Biodiversity",
-    tags: ["Flora & fauna inventory", "Bird survey", "Soil sampling", "Biophysical assessment", "Field navigation"],
-  },
-  {
-    title: "Social Forestry & Community Engagement",
-    tags: ["Social interviews", "FGD facilitation", "Perhutanan Sosial", "KTH mentoring", "Participatory appraisal"],
-  },
-  {
-    title: "Administration & Financial Oversight",
-    tags: ["IDR 240M budget management", "Financial bookkeeping", "Digital archiving", "Audit preparation", "Microsoft Excel"],
-  },
-  {
-    title: "Project Leadership & Education",
-    tags: ["Expedition leadership", "Cross-team coordination", "Environmental education", "Public speaking", "Team mentorship"],
   },
 ];
 

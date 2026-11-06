@@ -4,7 +4,6 @@ import Hero from "@/components/Hero";
 import Manifesto from "@/components/Manifesto";
 import WorksSection from "@/components/WorksSection";
 import FootprintSection from "@/components/FootprintSection";
-import ExpertiseSection from "@/components/ExpertiseSection";
 import MethodSection from "@/components/MethodSection";
 import ExperienceSection from "@/components/ExperienceSection";
 import ContactSection from "@/components/ContactSection";
@@ -19,7 +18,6 @@ export default function Home() {
         <Manifesto />
         <WorksSection />
         <FootprintSection />
-        <ExpertiseSection />
         <MethodSection />
         <ExperienceSection />
         <ContactSection />

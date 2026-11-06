@@ -274,28 +274,6 @@
 
 
 @layer sections {
-  #expertise { position: relative; padding: var(--space-2) var(--space-1); background: var(--color-2); color: var(--color-1); }
-  #expertise .expertise__head { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 24px; align-items: end; }
-  #expertise .expertise__head h2 { grid-column: 1 / span 5; }
-  #expertise .expertise__head p { grid-column: 7 / span 6; }
-  #expertise .expertise__body { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 24px; margin-top: clamp(48px, 7vw, 104px); }
-  #expertise .expertise__portrait { grid-column: 1 / span 4; position: sticky; top: 92px; align-self: start; height: min(72vh, 640px); overflow: hidden; background: var(--color-6); }
-  #expertise .expertise__portrait-in { position: absolute; inset: 0; }
-  #expertise .expertise__portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 62% 40%; }
-  #expertise .expertise__rows { grid-column: 6 / span 7; border-bottom: 1px solid var(--color-6); }
-  #expertise .expertise__row { display: grid; gap: 16px; padding: clamp(26px, 3vw, 40px) 0; border-top: 1px solid var(--color-6); }
-  #expertise .expertise__row h3 { font-size: clamp(26px, 3vw, 42px); }
-  #expertise .expertise__tags { display: flex; flex-wrap: wrap; gap: 6px 18px; }
-  #expertise .expertise__more { margin-top: clamp(48px, 6vw, 80px); }
-  @media (max-width: 860px) {
-    #expertise .expertise__head h2, #expertise .expertise__head p { grid-column: 1 / -1; }
-    #expertise .expertise__portrait { grid-column: 1 / -1; position: relative; top: 0; height: auto; aspect-ratio: 4 / 3; }
-    #expertise .expertise__rows { grid-column: 1 / -1; }
-  }
-}
-
-
-@layer sections {
   #method { position: relative; overflow-x: clip; padding: var(--space-2) var(--space-1); }
   #method .method__head { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 24px; align-items: end; padding-bottom: clamp(28px, 3.5vw, 48px); border-bottom: 1px solid var(--color-2); }
   #method .method__head h2 { grid-column: 1 / span 7; }
@@ -437,17 +415,6 @@
 [data-8b-live] #clients .clients__row:hover .clients__track,
 [data-8b-live] #clients .clients__row:focus-within .clients__track { animation-play-state: paused; }
 @keyframes clients-run { to { transform: translate3d(-50%, 0, 0); } }
-}
-
-
-@layer scenes {
-[data-8b-live] #expertise .m-text-2 { --motion-trail: 0; }
-[data-8b-live] #expertise .expertise__rows > li { view-timeline: --expertise-item block; view-timeline-inset: 0; animation-name: expertise-li-expertise-row-opacity; animation-timeline: --expertise-item; animation-range: cover 0% cover 100%; animation-timing-function: linear; animation-fill-mode: both; }
-[data-8b-live] #expertise .expertise__body { view-timeline: --expertise-t2 block; view-timeline-inset: 0; }
-[data-8b-live] #expertise .expertise__portrait-in { animation-name: expertise-div-expertise-portrait-in-scale, expertise-div-expertise-portrait-in-translate; animation-timeline: --expertise-t2; animation-range: cover 45vh cover calc(100% - 60vh); animation-timing-function: linear; animation-fill-mode: both; transform: none; transform-origin: 62% 38%; }
-@keyframes expertise-li-expertise-row-opacity { 0% { opacity: 0.22; animation-timing-function: cubic-bezier(0.3333, 0, 0.6667, 0.3333); } 50% { opacity: 1; animation-timing-function: cubic-bezier(0.3333, 0.6667, 0.6667, 1); } 100% { opacity: 0.22; } }
-@keyframes expertise-div-expertise-portrait-in-scale { 0% { scale: 1; } 100% { scale: 1.42; } }
-@keyframes expertise-div-expertise-portrait-in-translate { 0% { translate: 0px 0px; } 100% { translate: 0px -6%; } }
 }
 
 

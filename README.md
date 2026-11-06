@@ -53,7 +53,6 @@ src/
 │   ├── Manifesto.tsx      # Pernyataan misi & filosofi kerja
 │   ├── WorksSection.tsx   # Kartu proyek bertumpuk (Selected Work)
 │   ├── FootprintSection.tsx # Marquee institusi & lokasi ekspedisi
-│   ├── ExpertiseSection.tsx # 5 pilar keahlian & foto riset
 │   ├── MethodSection.tsx  # 4 tahapan metodologi kerja
 │   ├── ExperienceSection.tsx # 6 milestone pengalaman kerja & organisasi
 │   ├── ContactSection.tsx # Informasi kontak & base location
